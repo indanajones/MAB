@@ -1,0 +1,66 @@
+
+<!DOCTYPE html>
+<html>
+<head>
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<style>
+    html, body { height: 100%; margin: 0; padding: 0; }
+    #map { position: absolute; top: 0; bottom: 0; width: 100%; }
+</style>
+</head>
+<body>
+<div id="map"></div>
+<script src="https://unpkg.com/leaflet@1.9.3/dist/leaflet.js"></script>
+<link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.3/dist/leaflet.css"/>
+<script>
+    var map = L.map('map').setView([-27.5954, -48.5480], 11);
+    L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
+        maxZoom: 19,
+        attribution: '&copy; OpenStreetMap contributors'
+    }).addTo(map);
+
+    var neighborhoods = [
+        {
+            name: "Ingleses do Rio Vermelho",
+            coords: [-27.432, -48.401],
+            desc: "Zona norte con gran oferta de servicios, comercios y vida todo el año. Playa extensa, ideal para turismo e inversión."
+        },
+        {
+            name: "Canasvieiras",
+            coords: [-27.431, -48.452],
+            desc: "Muy buscado por familias y turistas argentinos. Infraestructura completa, fácil acceso y buena rentabilidad en temporada."
+        },
+        {
+            name: "Jurerê Internacional",
+            coords: [-27.443, -48.493],
+            desc: "Lujo y exclusividad en la isla. Alta valorización y perfil premium de inversores."
+        },
+        {
+            name: "Lagoa da Conceição",
+            coords: [-27.594, -48.453],
+            desc: "Centro cultural y gastronómico. Gran vida nocturna y deportes acuáticos."
+        },
+        {
+            name: "Campeche",
+            coords: [-27.686, -48.507],
+            desc: "Zona en auge con mezcla de naturaleza y desarrollo urbano. Muy popular entre jóvenes familias y surfistas."
+        },
+        {
+            name: "Centro",
+            coords: [-27.596, -48.549],
+            desc: "Corazón comercial y administrativo de Florianópolis. Ideal para alquiler anual y oficinas."
+        },
+        {
+            name: "Cacupé",
+            coords: [-27.543, -48.523],
+            desc: "Barrio residencial tranquilo con vistas espectaculares a la bahía."
+        }
+    ];
+
+    neighborhoods.forEach(function(nb) {
+        L.marker(nb.coords).addTo(map)
+            .bindPopup('<b>' + nb.name + '</b><br>' + nb.desc);
+    });
+</script>
+</body>
+</html>
